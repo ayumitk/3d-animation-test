@@ -35,7 +35,7 @@ export default function Wrapper() {
 
 			<div className={styles.placeholder}>screen 1</div>
 			<div className={styles.placeholder}>screen 2</div>
-			<div className={styles.placeholder}>screen 3</div>
+			{/* <div className={styles.placeholder}>screen 3</div> */}
 
       <Background scrollYProgress={scrollYProgress} />
 		</div>
