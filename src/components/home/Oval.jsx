@@ -9,13 +9,7 @@ import { useFrame } from "@react-three/fiber";
 export default function Oval(props) {
 	const { nodes, materials } = useGLTF("./oval.glb");
 
-  const {
-		// mouse,
-		// multiplier,
-		// position,
-		metalness,
-		roughness,
-	} = props;
+	const { mouse, multiplier, position, metalness, roughness } = props;
 
 	const newMaterials = materials;
 
@@ -26,16 +20,16 @@ export default function Oval(props) {
 
 	const ovalRef = useRef();
 
-	// const positionX = useTransform(
-	// 	mouse.x,
-	// 	[0, 1],
-	// 	[position[0] + multiplier * 0.15, position[0] - multiplier * 0.15],
-	// );
-	// const positionY = useTransform(
-	// 	mouse.y,
-	// 	[0, 1],
-	// 	[position[1] - multiplier * 0.15, position[1] + multiplier * 0.15],
-	// );
+	const positionX = useTransform(
+		mouse.x,
+		[0, 1],
+		[position[0] + multiplier * 0.15, position[0] - multiplier * 0.15],
+	);
+	const positionY = useTransform(
+		mouse.y,
+		[0, 1],
+		[position[1] - multiplier * 0.15, position[1] + multiplier * 0.15],
+	);
 
 	useFrame(() => {
 		if (ovalRef.current) {
@@ -52,8 +46,8 @@ export default function Oval(props) {
 			receiveShadow
 			geometry={nodes.Oval3001.geometry}
 			material={materials.Material__V2}
-			// position-x={positionX}
-			// position-y={positionY}
+			position-x={positionX}
+			position-y={positionY}
 		/>
 	);
 }
